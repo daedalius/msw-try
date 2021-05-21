@@ -6,5 +6,5 @@ import { Application } from './Application';
 
 test('Application component renders welcome message', () => {
   const { getByText } = render(<Application />);
-  expect(getByText('Hello!')).toBeInTheDocument();
+  expect(getByText('to-do list')).toBeInTheDocument();
 });

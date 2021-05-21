@@ -1,0 +1,18 @@
+.todo-item + .todo-item{
+  margin-top: 6px;
+}
+
+.todo-item__content {
+  display: flex;
+  column-gap: 8px;
+}
+
+.todo-item__remove {
+  border: 1px solid red;
+  border-radius: 4px;
+
+  color: red;
+  background: white;
+
+  cursor: pointer;
+}

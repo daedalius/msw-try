@@ -1,10 +1,12 @@
 const { resolve } = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/main.tsx',
   output: {
-    path: resolve('./dist/app')
+    path: resolve('./dist/app'),
   },
   module: {
     rules: [
@@ -40,7 +42,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name]-[hash].[ext]',
-              outputPath: 'images'
+              outputPath: 'images',
             },
           },
         ],
@@ -53,5 +55,14 @@ module.exports = {
     },
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
   },
-  plugins: [new HtmlWebpackPlugin({ template: './src/index.html' })],
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({ template: './src/index.html' }),
+    // Register MSW for non-production builds
+    process.env.NODE_ENV !== 'production'
+      ? new CopyWebpackPlugin({
+          patterns: [{ from: './src/mocks/mockServiceWorker.js' }],
+        })
+      : false,
+  ].filter(Boolean),
 };
