@@ -8,11 +8,11 @@ let appState = {
 
 export const handlers = [
   // TODO: move to TodoList mocks folder
-  rest.get('/todoList', (req, res, ctx) => {
+  rest.get('http://127.0.0.1/todoList', (req, res, ctx) => {
     return res(ctx.status(200), ctx.json({ items: appState.todoListItems }));
   }),
   // TODO: move to TodoList mocks folder
-  rest.delete('/todoList', (req, res, ctx) => {
+  rest.delete('http://127.0.0.1/todoList', (req, res, ctx) => {
     const todoItemToRemove = JSON.parse(req.body);
     appState = {
       ...appState,
@@ -22,7 +22,7 @@ export const handlers = [
     return res(ctx.status(200), ctx.json({ items: appState.todoListItems }));
   }),
   // TODO: move to TodoList mocks folder
-  rest.put('/todoList', (req, res, ctx) => {
+  rest.put('http://127.0.0.1/todoList', (req, res, ctx) => {
     const todoItemToUpdate = JSON.parse(req.body);
     appState = {
       ...appState,

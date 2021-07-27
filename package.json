@@ -67,8 +67,10 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "msw": "^0.28.2",
+    "start-server-and-test": "^1.12.6",
     "ts-node": "^9.1.1",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.2",
+    "whatwg-fetch": "^3.6.2"
   },
   "prettier": {
     "printWidth": 120,

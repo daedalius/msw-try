@@ -7,7 +7,7 @@ import * as api from './utils/api';
 import './styles.css';
 
 export const TodoList = React.memo(() => {
-  const [todoItems, setTodoItems] = React.useState([]);
+  const [todoItems, setTodoItems] = React.useState(undefined);
 
   React.useEffect(() => {
     api.getAllTodoItems().then((todoItems) => {
@@ -32,6 +32,14 @@ export const TodoList = React.memo(() => {
     },
     [todoItems, setTodoItems]
   );
+
+  if(todoItems === undefined) {
+    return <div>loading...</div>
+  }
+
+  if(todoItems.length === 0) {
+    return <div>the list is empty</div>
+  }
 
   return (
     <ul className="todo-list">
